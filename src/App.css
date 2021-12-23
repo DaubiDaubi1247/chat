@@ -1,6 +1,16 @@
-.App {
+.wrapper {
+    display: grid;
+    grid-template-areas: "header header " "nav main";
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 10fr;
+}
+
+
+/* .App {
   text-align: center;
 }
+
+
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +45,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
