@@ -5,6 +5,10 @@
     grid-template-columns: 2fr 10fr;
 }
 
+main {
+    background-color: green;
+}
+
 
 /* .App {
   text-align: center;
