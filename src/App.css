@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas: "header header " "nav main";
     grid-template-rows: 1fr;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 0.7fr 10fr;
 }
 
 main {
