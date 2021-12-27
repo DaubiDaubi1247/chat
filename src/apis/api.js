@@ -37,6 +37,27 @@ export const FilmsAPI = {
     }
 }
 
-export const NewsAPI = {
+class Request {
+    constructor(domen, path) {
+        this.domen = domen;
+        this.path = path
+    }
+}
 
+const instanceNews = {
+    anime: new Request("https://api.waifu.im", "random/"),
+    memes: new Request("https://api.imgflip.com/get_memes", null),
+    dog: new Request("https://dog.ceo/api/breeds/image/random/2", null)
+}
+
+//https://api.waifu.im/
+
+export const NewsAPI = {
+    getAnimal() {
+        return axios.get(`${instanceNews.dog.domen}`)
+    },
+
+    getMemes() {
+        return axios.get(`${instanceNews.memes.domen}`)
+    }
 }

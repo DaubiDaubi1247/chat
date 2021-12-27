@@ -14,6 +14,7 @@ const NewsGroup = (props) => {
         <Wrapper>
             <span>{props.groupName}</span>
             <img src={props.image} alt="" />
+            
             {!props.subscr ? 
                 <Button onClick={() => props.setSubscr(props.groupName,true)}>Подписаться</Button>
                 :
