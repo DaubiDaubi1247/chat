@@ -4,10 +4,6 @@ import { getAnimal, getMemes } from "../../../redux/reducers/news-reducer"
 import styled from "styled-components"
 import NewsContent from "./news-content/newContent"
 
-
-
-const Wrapper = styled.div`
-`
 const NewsContentContainer = (props) => {
     useEffect(() => {
         if (props.arrSubscr[2].subscr) {
