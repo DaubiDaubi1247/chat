@@ -1,32 +1,46 @@
 import { useEffect } from "react"
 import { connect } from "react-redux"
-import { getAnimal, getMemes } from "../../../redux/reducers/news-reducer"
-import styled from "styled-components"
+import { getDog, getMemes } from "../../../redux/reducers/news-reducer"
 import NewsContent from "./news-content/newContent"
+import { setLoading } from "../../../redux/reducers/common-reducer"
+import Preloader from "../../../common/Preloader/Preloader"
+
 
 const NewsContentContainer = (props) => {
-    useEffect(() => {
-        if (props.arrSubscr[2].subscr) {
-            props.getMemes();  
+    const request = (isSubscr,requestFunction) => {
+        if (isSubscr) {
+            props.setLoading(true)
+            requestFunction()
         }
+    }
+    useEffect(() => {
+        request(props.arrSubscr[2].subscr, props.getMemes)     
     },[props.memesArr.length])
     
     useEffect(() => {
-        if (props.arrSubscr[1].subscr) {
-            props.getAnimal();  
-        }
-    },[props.animalArr.length])
-
-    return <NewsContent memesArr={props.memesArr} animalArr={props.animalArr}/>
+        request(props.arrSubscr[1].subscr, props.getDog)
+    },[props.dogsArr.length])
+    
+    return (
+        
+        <div>
+            {props.isLoading ? 
+                <Preloader/>
+            :
+                <NewsContent memesArr={props.memesArr} dogsArr={props.dogsArr} setLoading={props.setLoading}/>
+            }
+        </div>
+    )
 }
 
 const mapStateToProps = (state) => {
     return {
         memesArr:state.news.memesArr,
         arrSubscr:state.news.arrSubscr,
-        animalArr: state.news.animalArr
+        dogsArr: state.news.dogsArr,
+        isLoading: state.common.isLoading
     }
 }
 export default connect(mapStateToProps,{
-    getMemes,getAnimal
+    getMemes,getDog,setLoading
 })(NewsContentContainer)

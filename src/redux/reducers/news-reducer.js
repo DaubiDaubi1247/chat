@@ -1,8 +1,9 @@
 import { NewsAPI } from "../../apis/api";
+import { setLoading } from "./common-reducer";
 
 const SET_SUBSCR = "SET_SUBSCR";
 const SET_MEMES_ARR = "SET_MEMES_ARR";
-const SET_ANIMAL_ARR = "SET_ANIMAL_ARR";
+const SET_DOG_ARR = "SET_DOG_ARR";
 
 export const setSubscr = (key, bool) => {
     return {
@@ -12,10 +13,10 @@ export const setSubscr = (key, bool) => {
     }
 }
 
-const setAnimalArr = (animalArr) => {
+const setDogArr = (dogsArr) => {
     return {
-        type: SET_ANIMAL_ARR,
-        animalArr,
+        type: SET_DOG_ARR,
+        dogsArr,
     }
 }
 
@@ -29,13 +30,13 @@ const setMemesArr = (memesArr) => {
 
 const initialState = {
     arrSubscr: [{
-            groupName: "anime",
-            subscr: JSON.parse(localStorage.getItem("anime")) || false,
+            groupName: "cats",
+            subscr: JSON.parse(localStorage.getItem("cats")) || false,
             image: null
         },
         {
-            groupName: "animals",
-            subscr: JSON.parse(localStorage.getItem("animals")) || false,
+            groupName: "dogs",
+            subscr: JSON.parse(localStorage.getItem("dogs")) || false,
             image: null
         },
         {
@@ -44,7 +45,7 @@ const initialState = {
             image: null
         },
     ],
-    animalArr: [],
+    dogsArr: [],
     memesArr: []
 }
 
@@ -66,10 +67,10 @@ const newsReducer = (state = initialState, action) => {
                 ...state,
                 memesArr: [...action.memesArr],
             }
-        case SET_ANIMAL_ARR:
+        case SET_DOG_ARR:
             return {
                 ...state,
-                animalArr: [...action.animalArr]
+                dogsArr: [...action.dogsArr]
             }
         default:
             return state
@@ -77,12 +78,12 @@ const newsReducer = (state = initialState, action) => {
 }
 
 
-
-export const getAnimal = () => (dispatch) => {
-    NewsAPI.getAnimal()
+export const getDog = () => (dispatch) => {
+    NewsAPI.getDog()
         .then((response) => {
             if (response.status === 200) {
-                dispatch(setAnimalArr(response.data.message))
+                dispatch(setLoading(false))
+                dispatch(setDogArr(response.data.message))
             }
         })
 }
@@ -91,6 +92,7 @@ export const getMemes = () => (dispatch) => {
     NewsAPI.getMemes()
         .then(response => {
             if (response.status === 200) {
+                dispatch(setLoading(false))
                 dispatch(setMemesArr(response.data.data.memes));
             }
         })

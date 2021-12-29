@@ -47,17 +47,20 @@ class Request {
 const instanceNews = {
     anime: new Request("https://api.waifu.im", "random/"),
     memes: new Request("https://api.imgflip.com/get_memes", null),
-    dog: new Request("https://dog.ceo/api/breeds/image/random/100", null)
+    dog: new Request("https://dog.ceo/api/breeds/image/random/50", null)
 }
 
 //https://api.waifu.im/
 
 export const NewsAPI = {
-    getAnimal() {
+    getDog() {
         return axios.get(`${instanceNews.dog.domen}`)
     },
 
     getMemes() {
         return axios.get(`${instanceNews.memes.domen}`)
-    }
+    },
+    // getZooAnimal() {
+    //     return axios.get(`${instanceNews.})
+    //}
 }
