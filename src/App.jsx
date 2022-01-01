@@ -7,8 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import FilmDescContainer from "./components/films/film-full-desc/filmDescContainer";
 import FilmsContainer from "./components/films/films-container/filmsContainer";
 import MainNews from "./components/news/main-news";
-
-<FilmsContainer />
+import SelfControlContainer from "./components/to-do/selfControlContainer";
 
 
 function App() {
@@ -21,6 +20,7 @@ function App() {
           <Route path="/films" element={<FilmsContainer />} />
           <Route path="films/:idFilm" element={<FilmDescContainer/>}/>
           <Route path="/news" element={<MainNews/>}/>
+          <Route path="/self-control" element={<SelfControlContainer/>}/>
         </Routes>
       </main>
     </div>
@@ -28,7 +28,3 @@ function App() {
 }
 
 export default App;
-
-//http://localhost:3000/films/tt10872600
-
-//http://localhost:3000/films/tt10872600

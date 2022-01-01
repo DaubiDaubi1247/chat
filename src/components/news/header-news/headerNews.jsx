@@ -7,6 +7,7 @@ import styled from "styled-components"
 const WrapperHeader = styled.header`
     display:flex;
     justify-content:center;
+    margin-bottom:10px
 `
 
 const HeaderNews = (props) => {

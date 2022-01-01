@@ -13,9 +13,10 @@ const NavBar = (props) => {
     return (
         <Nav >
             <ul>
-                <NavItem target="News/" section="News"></NavItem>    
-                <NavItem target="settings/" section="Settings"></NavItem>
+                <NavItem target="News/" section="News"/>   
+                <NavItem target="messages/" section="Messages"/>
                 <NavItem target="films/" section="Films"/>
+                <NavItem target="self-control/" section="Self-control"/>
             </ul>
         </Nav>
     )

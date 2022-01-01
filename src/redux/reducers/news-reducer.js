@@ -29,11 +29,11 @@ const setMemesArr = (memesArr) => {
 }
 
 const initialState = {
-    arrSubscr: [{
-            groupName: "cats",
-            subscr: JSON.parse(localStorage.getItem("cats")) || false,
-            image: null
-        },
+    arrSubscr: [ //{
+        //         groupName: "cats",
+        //         subscr: JSON.parse(localStorage.getItem("cats")) || false,
+        //         image: null
+        //     },
         {
             groupName: "dogs",
             subscr: JSON.parse(localStorage.getItem("dogs")) || false,

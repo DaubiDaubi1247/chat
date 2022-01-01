@@ -13,16 +13,16 @@ const NewsContentContainer = (props) => {
             requestFunction()
         }
     }
+
     useEffect(() => {
-        request(props.arrSubscr[2].subscr, props.getMemes)     
-    },[props.memesArr.length])
+        request(props.arrSubscr[1].subscr, props.getMemes)     
+    },[props.memesArr.length,props.arrSubscr[1].subscr])
     
     useEffect(() => {
-        request(props.arrSubscr[1].subscr, props.getDog)
-    },[props.dogsArr.length])
+        request(props.arrSubscr[0].subscr, props.getDog)
+    },[props.dogsArr.length,props.arrSubscr[0].subscr])
     
-    return (
-        
+    return ( 
         <div>
             {props.isLoading ? 
                 <Preloader/>
