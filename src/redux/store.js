@@ -5,15 +5,16 @@ import thunkMiddleWare from 'redux-thunk'
 import filmsReducer from "./reducers/film-reducer"
 import commonReducer from "./reducers/common-reducer"
 import newsReducer from "./reducers/news-reducer"
-import { reducer as formReducer } from "react-final-form"
+import selfControlReducer from "./reducers/self-control-reducer"
+
 
 let reducers = combineReducers({
     common: commonReducer,
     auth: authReducer,
     films: filmsReducer,
     news: newsReducer,
+    selfControl: selfControlReducer
 })
-
 const store = createStore(reducers, applyMiddleware(thunkMiddleWare));
 window.store = store;
 
