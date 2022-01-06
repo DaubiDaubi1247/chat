@@ -60,7 +60,9 @@ export const NewsAPI = {
     getMemes() {
         return axios.get(`${instanceNews.memes.domen}`)
     },
-    // getZooAnimal() {
-    //     return axios.get(`${instanceNews.})
-    //}
+
+}
+
+export const MessagesAPI = {
+    g(data) { axios.post("/messages", data) }
 }

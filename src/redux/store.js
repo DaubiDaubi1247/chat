@@ -6,14 +6,15 @@ import filmsReducer from "./reducers/film-reducer"
 import commonReducer from "./reducers/common-reducer"
 import newsReducer from "./reducers/news-reducer"
 import selfControlReducer from "./reducers/self-control-reducer"
-
+import messagesReducer from "./reducers/messages-reducer"
 
 let reducers = combineReducers({
     common: commonReducer,
     auth: authReducer,
     films: filmsReducer,
     news: newsReducer,
-    selfControl: selfControlReducer
+    selfControl: selfControlReducer,
+    messages: messagesReducer
 })
 const store = createStore(reducers, applyMiddleware(thunkMiddleWare));
 window.store = store;

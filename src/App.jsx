@@ -8,6 +8,7 @@ import FilmDescContainer from "./components/films/film-full-desc/filmDescContain
 import FilmsContainer from "./components/films/films-container/filmsContainer";
 import MainNews from "./components/news/main-news";
 import SelfControlContainer from "./components/to-do/selfControlContainer";
+import MessagesContainer from "./components/messages/messagesContainer";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/films" element={<FilmsContainer />} />
           <Route path="films/:idFilm" element={<FilmDescContainer/>}/>
           <Route path="/news" element={<MainNews/>}/>
+          <Route path="/messages" element={<MessagesContainer/>}/>
           <Route path="/self-control" element={<SelfControlContainer/>}/>
         </Routes>
       </main>
