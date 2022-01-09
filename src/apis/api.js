@@ -64,5 +64,5 @@ export const NewsAPI = {
 }
 
 export const MessagesAPI = {
-    g(data) { axios.post("/messages", data) }
+    g(data) { return axios.post("http://localhost:3000/messages", data) }
 }
