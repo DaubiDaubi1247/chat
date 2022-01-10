@@ -12,8 +12,16 @@ const rooms = new Map([]);
 
 app.use(express.json()) //позволяет считывать из запроса пост данные
 
+app.get('/messages/:id', (req, res) => { //получаем запрос с id комнаты
+    const { id } = req.params;
+    const data = { // создаем объект в котором будут храниться пользователи комнаты и их сообщения
+        users: [...rooms.get(id).get("users").values()],
+        // messages: [...rooms.get(id).get("messages").values()]
+    };
+    res.json(data)
+})
 
-app.post("/messages", (req, res) => {
+app.post("/messages", (req, res) => { // прикрутить к регистрации
     const body = req.body;
     if (!rooms.has(body.roomId)) {
         rooms.set(body.roomId, new Map([ // под id комнаты будет храниться коллекция поьзователетей и сообщений
@@ -35,6 +43,14 @@ io.on("connection", socket => {
         rooms.get(data.roomId).get("users").set(socket.id, data.userName) // сохранение в бд(позже попытаюсь самостоятельно прикрутить какую то бд)
         const users = [...rooms.get(data.roomId).get("users").values()]; // получаем список пользователей
         socket.to(data.roomId).emit("ROOM:JOINED", users) //сначала "заходим" в команту, а затем отправляем сокет запрос всем кроме нас юзерам комнаты
+    })
+    socket.on("disconnect", () => {
+        rooms.forEach((value, roomId) => {
+            if (value.get("users").delete(socket.id)) { // удаляем значение , если удалился то true
+                const users = [...value.get("users").values()]; // получаем новый список пользователей
+                socket.broadcast.to(roomId).emit("ROOM:LEAVE", users)
+            }
+        });
     })
 })
 

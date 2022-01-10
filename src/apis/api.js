@@ -46,23 +46,26 @@ class Request {
 
 const instanceNews = {
     anime: new Request("https://api.waifu.im", "random/"),
-    memes: new Request("https://api.imgflip.com/get_memes", null),
-    dog: new Request("https://dog.ceo/api/breeds/image/random/50", null)
+    memes: new Request("https://api.imgflip.com", "get_memes"),
+    dog: new Request("https://dog.ceo/api/breeds", "image/random/50")
 }
 
 //https://api.waifu.im/
 
 export const NewsAPI = {
     getDog() {
-        return axios.get(`${instanceNews.dog.domen}`)
+        return axios.get(`${instanceNews.dog.domen}/${instanceNews.dog.path}`)
     },
 
     getMemes() {
-        return axios.get(`${instanceNews.memes.domen}`)
+        return axios.get(`${instanceNews.memes.domen}/${instanceNews.memes.path}`)
     },
 
 }
 
 export const MessagesAPI = {
-    g(data) { return axios.post("http://localhost:3000/messages", data) }
+    g(data) { return axios.post("http://localhost:3000/messages", data) },
+    getOnlineUsers(roomId) {
+        return axios.get(`/messages/${roomId}`)
+    }
 }
