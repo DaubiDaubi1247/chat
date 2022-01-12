@@ -16,14 +16,14 @@ app.get('/messages/:id', (req, res) => { //получаем запрос с id �
     const { id } = req.params;
     const data = { // создаем объект в котором будут храниться пользователи комнаты и их сообщения
         users: [...rooms.get(id).get("users").values()],
-        // messages: [...rooms.get(id).get("messages").values()]
+        msg: [...rooms.get(id).get("messages").values()]
     };
     res.json(data)
 })
 
 app.post("/messages", (req, res) => { // прикрутить к регистрации
     const body = req.body;
-    if (!rooms.has(body.roomId)) {
+    if (!rooms.has(body.roomId)) { // если такой комнаты не существует то создаем
         rooms.set(body.roomId, new Map([ // под id комнаты будет храниться коллекция поьзователетей и сообщений
             ["users", new Map()],
             ["messages", []]
@@ -51,6 +51,16 @@ io.on("connection", socket => {
                 socket.broadcast.to(roomId).emit("ROOM:LEAVE", users)
             }
         });
+    })
+
+    socket.on("ROOM:NEW_MESSAGE", ({ roomId, userName, msg }) => {
+        const msgData = {
+            userName,
+            msg,
+            roomId,
+        }
+        rooms.get(roomId).get("messages").push(msgData)
+        socket.broadcast.to(roomId).emit("ROOM:ADD_MESSAGE", msgData)
     })
 })
 

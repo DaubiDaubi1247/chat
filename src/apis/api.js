@@ -65,7 +65,7 @@ export const NewsAPI = {
 
 export const MessagesAPI = {
     g(data) { return axios.post("http://localhost:3000/messages", data) },
-    getOnlineUsers(roomId) {
+    getOnlineUsersAndMsg(roomId) {
         return axios.get(`/messages/${roomId}`)
     }
 }
