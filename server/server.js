@@ -7,6 +7,11 @@ const server = require('http').createServer(app) // создаем http серв
 const { Server } = require("socket.io");
 const io = new Server(server);
 // хранит информацию о сокетах и сервере
+const mysql = require('mysql');
+//конфиг
+// const conn = mysql.createConnection({
+//     host
+// })
 
 const rooms = new Map([]);
 

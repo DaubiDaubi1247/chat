@@ -7,20 +7,13 @@ import Preloader from "../../../common/Preloader/Preloader"
 import { setLoading } from "../../../redux/reducers/common-reducer"
 import { getArrFilms, getStartFilms, setRequestText } from "../../../redux/reducers/film-reducer"
 import Films from "./films/Film"
+import "./film-container.scss"
 
 const Wrapper = styled.div`
     padding:10px;
 `
-const Button = styled.button`
-    background: black;
-    margin-top:10px;
-    margin-bottom:10px;
-    border:none;
-    display:block;
-    color:white;
-    padding:10px;
-    border-radius:6px
-`
+
+
 const Input = styled.input`
     padding:10px;
     width:250px;
@@ -69,7 +62,7 @@ class FilmsContainer extends React.Component {
                 {this.props.isLoading ? <Preloader/> : 
                 <div>
                     <Input type="text" onChange={this.pushUserSymb} value={this.state.text} placeholder="Введите название фильма"/>
-                    <Button onClick={this.sendRequestInState}>Найти Фильмы</Button>
+                    <button className="film__container-btn" onClick={this.sendRequestInState}>Найти Фильмы</button>
                     {
                         this.getArrFilms()
                     }

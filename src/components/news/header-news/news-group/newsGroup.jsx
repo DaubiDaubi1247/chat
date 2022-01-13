@@ -1,25 +1,15 @@
-import styled from "styled-components"
-
-const Wrapper = styled.div`
-    text-align: center
-    margin-right:10px;
-`
-
-const Button = styled.button`
-    display:block;
-`
+import "./new-group.scss"
 
 const NewsGroup = (props) => {
     return (
-        <Wrapper>
-            <span>{props.groupName}</span>
-            <img src={props.image} alt="" />
+        <div className="group__wrapper">
+            <span className="group__name">{props.groupName}</span>
             
             {!props.subscr ? 
-                <Button onClick={() => props.setSubscr(props.groupName,true)}>Подписаться</Button>
+                <button className="group__subscrBtn"onClick={() => props.setSubscr(props.groupName,true)}>Подписаться</button>
                 :
-                <Button onClick={() => props.setSubscr(props.groupName,false)}>Отписатьсся</Button>}
-        </Wrapper>
+                <button className="group__subscrBtn" onClick={() => props.setSubscr(props.groupName,false)}>Отписатьсся</button>}
+        </div>
     )
 }
 

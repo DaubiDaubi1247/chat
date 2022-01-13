@@ -1,21 +1,12 @@
 import { NavLink } from "react-router-dom"
-import React from "react"  
-import styled from "styled-components"
-
-const ListItem = styled.li`
-    a {
-        color: white;
-        text-decoration: none;
-    }
-    list-style-type: none;
-    margin-bottom: 5px;
-`
+import React from "react" 
+import "./nav-item.scss" 
 
 const NavItem = (props) => {
     return (
-        <ListItem>
+        <li className="nav__item">
             <NavLink to={props.target}>{props.section}</NavLink>
-        </ListItem>
+        </li>
     )
 }
 
