@@ -27,6 +27,8 @@ const getFullDescr = (filmData) => {
     }
 }
 
+
+
 let initialState = {
     arrMovies: [],
     text: "",

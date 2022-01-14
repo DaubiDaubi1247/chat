@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { connect } from "react-redux"
 import { getDog, getMemes } from "../../../redux/reducers/news-reducer"
-import NewsContent from "./news-content/newContent"
+import NewsContent from "./news-content-item/newContent"
 import { setLoading } from "../../../redux/reducers/common-reducer"
 import Preloader from "../../../common/Preloader/Preloader"
 

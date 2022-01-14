@@ -1,30 +1,11 @@
 import React from "react"
 import { connect } from "react-redux"
-import { useParams } from "react-router-dom"
-import { compose } from "redux"
-import styled from "styled-components"
 import Preloader from "../../../common/Preloader/Preloader"
 import { setLoading } from "../../../redux/reducers/common-reducer"
 import { getArrFilms, getStartFilms, setRequestText } from "../../../redux/reducers/film-reducer"
-import Films from "./films/Film"
+import Film from "./film/Film"
 import "./film-container.scss"
 
-const Wrapper = styled.div`
-    padding:10px;
-`
-
-
-const Input = styled.input`
-    padding:10px;
-    width:250px;
-    border:solid 2px #000;
-    border-radius:6px;
-`
-
-const Description = styled.span`
-    margin:5px;
-
-`
 
 class FilmsContainer extends React.Component {
     
@@ -41,9 +22,9 @@ class FilmsContainer extends React.Component {
 
     getArrFilms = () => {
         if (this.props.arrMovies.length === 0) {
-            return <h2>Фильмы не найдены((</h2>
+            return <h2 className="films__no-found-title">Фильмы по запросу {this.props.text} не найдены((</h2>
         }
-        return this.props.arrMovies.map((el) => <Films {...el}/>)
+        return this.props.arrMovies.map((el) => <Film {...el}/>)
     }
     
     pushUserSymb = (e) =>{
@@ -58,17 +39,21 @@ class FilmsContainer extends React.Component {
 
     render() {
         return (
-            <Wrapper>  
-                {this.props.isLoading ? <Preloader/> : 
-                <div>
-                    <Input type="text" onChange={this.pushUserSymb} value={this.state.text} placeholder="Введите название фильма"/>
-                    <button className="film__container-btn" onClick={this.sendRequestInState}>Найти Фильмы</button>
-                    {
-                        this.getArrFilms()
+            <div className="films">  
+                <div className="container">
+                    {this.props.isLoading ? <Preloader/> :
+                    <div>
+                        <input className="films__input" type="text" onChange={this.pushUserSymb} value={this.state.text} placeholder="Введите название фильма"/>
+                        <button className="films__btn" onClick={this.sendRequestInState}>
+                            Найти Фильмы
+                        </button>
+                        {
+                            this.getArrFilms()
+                        }
+                    </div>
                     }
                 </div>
-                }
-            </Wrapper>
+            </div>
         )
     }
 }
@@ -83,8 +68,8 @@ const mapStateToProps = (state) => {
 }
 
 
-export default compose(
+export default 
     connect(mapStateToProps,{
         getArrFilms,setRequestText,getStartFilms,setLoading
-    }),
-)(FilmsContainer)
+    })
+(FilmsContainer)
