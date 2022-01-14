@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     }
 `
 
-const TitlePage = styled.img`
+const Titleimg = styled.img`
     max-width:500px
     max-height:500px
 `
@@ -21,10 +21,16 @@ const TitleText = styled.span`
         margin-bottom : 5px;
         display:block;
     `}
+    ${props => props.name && css`
+        text-align : center;
+        margin-bottom:15px
+    `}
 `
 const DescriptionWrapper = styled.div`
     display:grid;
-    grid-template-columns: 1fr 3fr
+    grid-template-columns: 1fr 3fr;
+    align-items:center;
+    margin-bottom:10px
 `
 const TextWrapper = styled.div`
     margin-left:10px;
@@ -41,13 +47,13 @@ const Description = styled.div`
 const Film = (props) => {
     return (
         <Wrapper>
-            <TitleText>{props.fullTitle || props.title}</TitleText>
+            <TitleText description name><span>{props.fullTitle || props.title}</span></TitleText>
             <DescriptionWrapper>
-                <TitlePage src={props.image} alt="" />
+                <Titleimg src={props.image} alt="" />
                     <TextWrapper>
                         <TitleText description><span>Directors</span> : {props.directors}</TitleText>
                         <TitleText description><span>Stars</span> : {props.stars}</TitleText>
-                        <TitleText description>Year of creation : {props.year}</TitleText>
+                        <TitleText description><span>Year of creation :</span> {props.year}</TitleText>
                         <TitleText description><span>IMDB</span> rating : {props.imDbRating}</TitleText>
                         <TitleText description><span>Year</span> of Release : {props.releaseDate}</TitleText>
                         <TitleText description><span>Awards</span> : {props.awards}</TitleText>

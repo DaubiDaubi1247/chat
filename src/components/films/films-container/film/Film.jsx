@@ -25,13 +25,13 @@ const Film = (props) => {
                 <img className="film-desc__title-img " src={props.image} alt="" />
             </NavLink>
             {props.crew ? 
-                <div>
+                <div className="film-desc__info">
                     <div>
-                        <span>Authors</span> 
+                        <span className="title">Authors</span> 
                         : {props.crew}
                     </div>
                     <div>
-                        <span>Imdb Rating</span>
+                        <span className="title">Imdb Rating</span>
                         : {props.imDbRating}
                     </div> 
                 </div> 
