@@ -1,0 +1,17 @@
+.film-desc {
+    a {
+        color: black;
+        font-weight: bold;
+    }
+    &__title-img {
+        max-width: 500px;
+        max-height: 500px;
+    }
+}
+
+.text {
+    margin-bottom: 5px;
+    span {
+        font-weight: bold;
+    }
+}

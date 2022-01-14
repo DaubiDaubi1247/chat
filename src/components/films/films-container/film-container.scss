@@ -1,0 +1,17 @@
+@import "../../../App.scss";
+.films {
+    padding: 10px;
+    &__btn {
+        @extend .btn;
+        margin: 10px 0 10px 0;
+    }
+    &__input {
+        padding: 10px;
+        width: 250px;
+        border: solid 2px #000;
+        border-radius: 6px;
+    }
+    &__no-found-title {
+        text-align: center
+    }
+}

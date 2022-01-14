@@ -1,0 +1,15 @@
+@import "../../../../common/button.scss";
+.group__wrapper {
+    text-align: center;
+    margin-right: 10px;
+    .group__subscrBtn {
+        @extend .btn;
+        margin-bottom: 10px;
+    }
+    .group__name {
+        font-weight: 700;
+        font-size: 18px;
+        display: inline-block;
+        margin: 5px 0 5px 0;
+    }
+}

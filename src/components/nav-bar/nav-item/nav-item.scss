@@ -1,0 +1,9 @@
+$linkClr: #fff;
+.nav__item {
+    a {
+        text-decoration: none;
+        color: $linkClr;
+    }
+    list-style-type: none;
+    margin-bottom: 5px;
+}

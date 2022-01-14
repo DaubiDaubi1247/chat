@@ -1,0 +1,11 @@
+$btnBackgroundClr:black;
+$btnTextClr:#fff;
+.btn {
+    display: block;
+    border-radius: 5px;
+    border: none;
+    background: $btnBackgroundClr;
+    padding: 8px;
+    color: $btnTextClr;
+    cursor: pointer;
+}
